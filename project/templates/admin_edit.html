@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/add_vol.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+
+<h1>{{x}}</h1>
+<form action="" method="POST" class="add-form">{% csrf_token %}
+    {% csrf_token %}
+    {{form}}
+    <button class="add-sub btn btn-primary bg-primary" type="submit"  style="color:white;">Add</button>
+</form>
+
+
+
+{% endblock %}
+</body>
+</html>

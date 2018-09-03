@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/activi.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3> here you can add Activities </h3>
+
+ </center>
+<form action="" method="POST" name="ali">
+         <div class="input-group mb-3 ali"> {% csrf_token %}
+              {{form}}
+             <button class="btn btn-primary" style="margin-top:10px">Add</button>
+         </div>
+     </form>
+<br>
+<br><br>
+<div class="container">
+    <div class="row">
+        {% for i in act %}
+            <div class="col-md-4">
+            <div class=" card" style="box-shadow: 1px 1px 10px #ccc;border-radius: 0px 0 100px 0!important;margin-bottom: 60px;">
+              <div class="card-header bg-primary" style="color:white">
+                <h5 style="margin:0">{{i.name}}</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Detils :{{i.detils}}</h5>
+                  <hr>
+                <p class="card-text">name : {{i.locations}}</p>
+                  <hr>
+                <p class="card-text">name : {{i.worked}}</p>
+                  <hr>
+
+                <button onclick="location.href= '{% url "delete_act" i.id %}'" type="button" class="btn btn-primary">delete</button>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

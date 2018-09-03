@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% extends 'base.html' %}
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<form action="" method="POST">{% csrf_token %}
+    <div class="container ">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup1">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">username</div>
+        </div>
+        <input class="form-control" id="inlineFormInputGroup1" type="text" name="username" placeholder="input your username">
+      </div>
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">password</div>
+        </div>
+        <input class="form-control" id="inlineFormInputGroup" type="password" name="password" placeholder="input your password">
+      </div>
+    </div>
+
+   <button type="submit" class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:20px">Login</button>
+        </div>
+</form>
+{% endblock %}
+</body>
+</html>

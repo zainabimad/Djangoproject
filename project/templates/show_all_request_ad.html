@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link1 %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3 style="margin-top:50px;margin-bottom:30px"> here you can show all request of you</h3>
+     <form action="" method="GET" style="width:  500px;margin-top: 30px;margin-bottom: 40px;">{% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="input-group-text btn btn-primary bg-primary" id="basic-addon1" type="submit" style="box-shadow: 1px 1px 9px #ccc;color: white;">Serach</button>
+              </div>
+                <input type="text" class="form-control" placeholder="Search for your request" aria-label="Username" aria-describedby="basic-addon1" name="search">
+                <p style="display:  block;width: 100%;"></p>
+                <select class="form-control" name="sort" >
+                    <option value="0">type search</option>
+                    <option value="1">request from admin</option>
+                    <option value="2">not request from admin</option>
+                </select>
+            </div>
+        </form>
+ </center>
+<div class="container">
+    <div class="row">
+        {% if len_request_or %}
+        <p style="
+    display:  block;
+    width:  100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    color: #555;">im find {{len_request_or}} request</p>
+        {% endif %}
+        {% for i in form %}
+        <div class="col-md-4">
+            <div class=" card" style="box-shadow: 1px 1px 10px #ccc;border-radius: 0px 0 100px 0!important;margin-bottom: 60px;">
+              <div class="card-header bg-primary" style="color:white">
+                <h5 style="margin:0">{{i.locations}}</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Detils :{{i.detils}}</h5>
+                  <hr>
+                <p class="card-text">name : {{i.name}}</p>
+                  <hr>
+                  <button onclick="location.href= '{% url "delete_request" i.id %}'" type="button" class="btn btn-primary">delete</button>
+                {% if not i.success %}
+                  <button onclick="location.href= '{% url "accept" i.id %}'" type="button" class="btn btn-primary">accept</button>
+                {% endif %}
+                  <button onclick="location.href= '{% url "edit" i.id %}'" type="button" class="btn btn-primary">edit</button>
+
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

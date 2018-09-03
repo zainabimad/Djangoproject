@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/activi.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3> here you can show Activities </h3>
+    <form action="" method="GET" style="width:  500px;margin-top: 30px;margin-bottom: 40px;">{% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="input-group-text btn btn-primary bg-primary" id="basic-addon1" type="submit" style="box-shadow: 1px 1px 9px #ccc;color: white;">Serach</button>
+              </div>
+                <input type="text" class="form-control" placeholder="Search for your request" aria-label="Username" aria-describedby="basic-addon1" name="search">
+                <p style="display:  block;width: 100%;"></p>
+                <select class="form-control" name="sort" >
+                    <option value="0">type search</option>
+                    <option value="1">type of name</option>
+                    <option value="2">type of work</option>
+                </select>
+            </div>
+        </form>
+ </center>
+
+<div class="container">
+    <div class="row">
+        {% if len_act_or %}
+        <p style="
+    display:  block;
+    width:  100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    color: #555;">You have {{len_act_or}} activities</p>
+        {% endif %}
+        {% for i in act %}
+            <div class="col-md-4">
+            <div class=" card" style="box-shadow: 1px 1px 10px #ccc;border-radius: 0px 0 100px 0!important;margin-bottom: 60px;">
+              <div class="card-header bg-primary" style="color:white">
+                <h5 style="margin:0">{{i.name}}</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Detils :{{i.detils}}</h5>
+                  <hr>
+                <p class="card-text">name : {{i.locations}}</p>
+                  <hr>
+                <p class="card-text">worked : {{i.worked}}</p>
+                  <hr>
+                  <p class="card-text">date : {{i.up_date}}</p>
+
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

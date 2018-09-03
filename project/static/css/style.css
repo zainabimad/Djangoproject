@@ -1,0 +1,8 @@
+input[name=name],input[name=age],input[name=birth_date],input[name=number],input[name=city]
+,input[name=img]{
+    display: block;
+    width: 50%;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    padding: 5px
+}

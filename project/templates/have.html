@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3 style="margin-top:50px"> plz input your real info </h3>
+     <form action="" method="POST" class="custom-file" enctype="multipart/form-data">
+        {% csrf_token %}
+         <input type="text" name="name" placeholder="enter your name" style="margin-bottom:10px">
+         <input type="text" name="number" placeholder="enter your number" style="margin-bottom:10px" >
+        <button class="add-sub btn btn-primary bg-primary" type="submit" style="color:white;">login</button>
+     </form>
+ </center>
+{% endblock %}
+</body>
+</html>

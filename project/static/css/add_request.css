@@ -1,0 +1,5 @@
+form[method=POST]{width: 50%!important}
+label{display: block;}
+input{border-radius: 20px;border: 1px solid #ccc;width: 100%}
+input[name=name],input[name=name_g],input[name=success]
+,label[for=id_name],label[for=id_name_g],label[for=id_success]{display: none;}

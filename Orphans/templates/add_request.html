@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/add_request.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3 style="margin-top:100px"> plz add request </h3>
+     <form action="" method="POST" class="custom-file" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button class="add-sub btn btn-primary" type="submit" style="display:block;color:white;width:150px;margin-top:20px">Add</button>
+     </form>
+ </center>
+{% endblock %}
+</body>
+</html>

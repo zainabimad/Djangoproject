@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+
+{% if not auth %}
+ <center>
+     <h3> welcome plz this informations very importint saved ! </h3>
+     <form action="" method="POST" class="custom-file" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button class="add-sub" type="submit" style="display:block;color:white;background:linear-gradient(to right, rgba(255, 5, 5, 0.68), #dc3545, #dc3545)!important;">Add</button>
+     </form>
+     <a href="sign/have_account" class="btn btn-danger" style="margin-top:10px;margin-bottom:50px">have account?</a>
+ </center>
+{% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+ <center>
+     <h3 style="margin-top:50px"> here you can show all Guarantor </h3>
+     <form action="" method="GET" style="width:  500px;margin-top: 30px;margin-bottom: 40px;">{% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="input-group-text btn btn-primary bg-primary" id="basic-addon1" type="submit" style="box-shadow: 1px 1px 9px #ccc;color: white;">Serach</button>
+              </div>
+                <input type="text" class="form-control" placeholder="Search for your request" aria-label="Username" aria-describedby="basic-addon1" name="search">
+                <p style="display:  block;width: 100%;"></p>
+
+            </div>
+        </form>
+ </center>
+<div class="container">
+    <div class="row">
+        {% for i in form %}
+            <div class="col-md-4">
+            <div class=" card" style="box-shadow: 1px 1px 10px #ccc;border-radius: 0px 0 100px 0!important;margin-bottom: 60px;">
+              <div class="card-header bg-primary" style="color:white">
+                <h5 style="margin:0">{{i.name}}</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">age :{{i.age}}</h5>
+                  <hr>
+                <p class="card-text">birth_date : {{i.birth_date}}</p>
+                  <hr>
+                <p class="card-text">number : {{i.number}}</p>
+                  <hr>
+                <p class="card-text">city : {{i.city}}</p>
+                  <hr>
+                <p class="card-text">work_locations : {{i.work_locations}}</p>
+                  <hr>
+                <p class="card-text">work : {{i.work}}</p>
+                  <button onclick="location.href= '{% url "delete_gua" i.id %}'" type="button" class="btn btn-primary">delete</button>
+              </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+</body>
+</html>
